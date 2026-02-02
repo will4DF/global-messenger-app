@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aether VoIP Dialer</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#007fff",
+                        "background-light": "#ffffff",
+                        "background-dark": "#0f1923",
+                        "surface-light": "#f3f4f6",
+                        "surface-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 15px rgba(0, 127, 255, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for clean look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased overflow-hidden h-screen w-full flex flex-col transition-colors duration-300">
+<!-- Status Bar Area (simulated) -->
+<div class="w-full h-12 shrink-0 flex items-end justify-between px-6 pb-2 text-xs font-medium opacity-80">
+<span>9:41</span>
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-sm">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-sm">wifi</span>
+<span class="material-symbols-outlined text-sm">battery_full</span>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col relative w-full max-w-md mx-auto h-full pb-[88px]"> <!-- Added padding bottom for Nav Bar -->
+<!-- Toggle Segment -->
+<div class="flex justify-center py-4 shrink-0">
+<div class="bg-surface-light dark:bg-surface-dark p-1 rounded-lg flex relative">
+<button class="px-6 py-1.5 rounded-md bg-white dark:bg-slate-700 shadow-sm text-xs font-bold text-slate-900 dark:text-white transition-all">Keypad</button>
+<button class="px-6 py-1.5 rounded-md text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-all">Contacts</button>
+</div>
+</div>
+<!-- Number Display Section -->
+<div class="flex flex-col items-center justify-center flex-grow min-h-[160px] relative px-6">
+<!-- Contact Match Pill -->
+<div class="absolute top-4 opacity-100 transition-opacity duration-300">
+<div class="flex items-center gap-2 pr-4 pl-1 py-1 rounded-full bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<img alt="Portrait of John Doe" class="w-8 h-8 rounded-full object-cover" data-alt="Small circular portrait of a contact named John Doe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBe9IVTuH5hVY2_FIIhEneRpVOOeLqpZocOsL_Sld9RPKsmzOAZlZX5Gozlh1qlvKFxJFCecAXf2bEoQNOvoAzuSYiY4XnQI4vgN9xyp9eAwY6EPigVbUtvpQIrREabEwFsXJlkJHQNMvXW732so7SdMjRoOt1cnR_4qsK1irnoc_hDEPgPBOafjWE8NdZXW1pJd6ULvqA8xnXpiLgJ5UxTE4ObqGoG3ps2zZ7BoFO80IO6rH6aoJPBJu1sgVbVPkpcnvqCNWJyJjqQ"/>
+<div class="flex flex-col">
+<span class="text-xs font-bold leading-none text-slate-900 dark:text-white">John Doe</span>
+<span class="text-[10px] text-primary font-medium leading-none mt-1">Mobile</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-sm ml-1">chevron_right</span>
+</div>
+</div>
+<!-- Number Input -->
+<div class="flex items-center justify-center gap-0.5 mt-8">
+<h1 class="text-4xl md:text-5xl font-bold tracking-tight text-center text-slate-900 dark:text-white selection:bg-primary/20">
+                    +1 (555) 019-28
+                </h1>
+<!-- Blinking Cursor Simulation (Static for now as per rules) -->
+<div class="w-0.5 h-10 bg-primary animate-pulse ml-1 rounded-full"></div>
+</div>
+<!-- Add to Contact Action -->
+<button class="mt-4 text-primary text-sm font-medium hover:underline opacity-0 lg:opacity-100 transition-opacity">
+                Add Number
+            </button>
+</div>
+<!-- Keypad Grid -->
+<div class="px-8 pb-6 shrink-0">
+<div class="grid grid-cols-3 gap-x-6 gap-y-4 max-w-[320px] mx-auto">
+<!-- Key 1 -->
+<button class="group relative flex flex-col items-center justify-center w-[72px] h-[72px] rounded-full bg-surface-light dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600 transition-all duration-200 select-none">
+<span class="text-3xl font-medium text-slate-900 dark:text-white leading-none">1</span>
+<span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 tracking-[0.1em] absolute bottom-3 opacity-0">_</span>
+</button>
+<!-- Key 2 -->
+<button class="group relative flex flex-col items-center justify-center w-[72px] h-[72px] rounded-full bg-surface-light dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600 transition-all duration-200 select-none">
+<span class="text-3xl font-medium text-slate-900 dark:text-white leading-none -mt-1">2</span>
+<span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-[0.1em] absolute bottom-3 uppercase">ABC</span>
+</button>
+<!-- Key 3 -->
+<button class="group relative flex flex-col items-center justify-center w-[72px] h-[72px] rounded-full bg-surface-light dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600 transition-all duration-200 select-none">
+<span class="text-3xl font-medium text-slate-900 dark:text-white leading-none -mt-1">3</span>
+<span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-[0.1em] absolute bottom-3 uppercase">DEF</span>
+</button>
+<!-- Key 4 -->
+<button class="group relative flex flex-col items-center justify-center w-[72px] h-[72px] rounded-full bg-surface-light dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600 transition-all duration-200 select-none">
+<span class="text-3xl font-medium text-slate-900 dark:text-white leading-none -mt-1">4</span>
+<span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-[0.1em] absolute bottom-3 uppercase">GHI</span>
+</button>
+<!-- Key 5 -->
+<button class="group relative flex flex-col items-center justify-center w-[72px] h-[72px] rounded-full bg-surface-light dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600 transition-all duration-200 select-none">
+<span class="text-3xl font-medium text-slate-900 dark:text-white leading-none -mt-1">5</span>
+<span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-[0.1em] absolute bottom-3 uppercase">JKL</span>
+</button>
+<!-- Key 6 -->
+<button class="group relative flex flex-col items-center justify-center w-[72px] h-[72px] rounded-full bg-surface-light dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600 transition-all duration-200 select-none">
+<span class="text-3xl font-medium text-slate-900 dark:text-white leading-none -mt-1">6</span>
+<span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-[0.1em] absolute bottom-3 uppercase">MNO</span>
+</button>
+<!-- Key 7 -->
+<button class="group relative flex flex-col items-center justify-center w-[72px] h-[72px] rounded-full bg-surface-light dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600 transition-all duration-200 select-none">
+<span class="text-3xl font-medium text-slate-900 dark:text-white leading-none -mt-1">7</span>
+<span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-[0.1em] absolute bottom-3 uppercase">PQRS</span>
+</button>
+<!-- Key 8 -->
+<button class="group relative flex flex-col items-center justify-center w-[72px] h-[72px] rounded-full bg-surface-light dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600 transition-all duration-200 select-none">
+<span class="text-3xl font-medium text-slate-900 dark:text-white leading-none -mt-1">8</span>
+<span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-[0.1em] absolute bottom-3 uppercase">TUV</span>
+</button>
+<!-- Key 9 -->
+<button class="group relative flex flex-col items-center justify-center w-[72px] h-[72px] rounded-full bg-surface-light dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600 transition-all duration-200 select-none">
+<span class="text-3xl font-medium text-slate-900 dark:text-white leading-none -mt-1">9</span>
+<span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-[0.1em] absolute bottom-3 uppercase">WXYZ</span>
+</button>
+<!-- Key * -->
+<button class="group relative flex flex-col items-center justify-center w-[72px] h-[72px] rounded-full bg-surface-light dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600 transition-all duration-200 select-none">
+<span class="text-4xl font-medium text-slate-900 dark:text-white leading-none pt-2">*</span>
+</button>
+<!-- Key 0 -->
+<button class="group relative flex flex-col items-center justify-center w-[72px] h-[72px] rounded-full bg-surface-light dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600 transition-all duration-200 select-none">
+<span class="text-3xl font-medium text-slate-900 dark:text-white leading-none -mt-1">0</span>
+<span class="text-xl font-bold text-slate-400 dark:text-slate-500 absolute bottom-3 leading-none">+</span>
+</button>
+<!-- Key # -->
+<button class="group relative flex flex-col items-center justify-center w-[72px] h-[72px] rounded-full bg-surface-light dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600 transition-all duration-200 select-none">
+<span class="text-3xl font-medium text-slate-900 dark:text-white leading-none pt-0.5">#</span>
+</button>
+</div>
+</div>
+<!-- Call Actions Area -->
+<div class="flex items-center justify-center gap-10 pb-6 pt-2 shrink-0">
+<!-- Video Call (Secondary) -->
+<button class="flex items-center justify-center w-12 h-12 rounded-full text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+<span class="material-symbols-outlined text-[28px]">videocam</span>
+</button>
+<!-- Main Call Button (Primary) -->
+<button class="flex items-center justify-center w-16 h-16 rounded-full bg-primary shadow-glow hover:bg-blue-600 active:scale-95 transition-all duration-200 text-white">
+<span class="material-symbols-outlined text-[32px] fill-current">call</span>
+</button>
+<!-- Backspace (Conditional) -->
+<button class="flex items-center justify-center w-12 h-12 rounded-full text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+<span class="material-symbols-outlined text-[28px]">backspace</span>
+</button>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 w-full bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 pb-6 pt-2 z-50">
+<div class="flex justify-around items-center max-w-md mx-auto px-2">
+<button class="flex flex-col items-center justify-center gap-1 p-2 w-16 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[26px]">star</span>
+<span class="text-[10px] font-medium">Favorites</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 w-16 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[26px]">schedule</span>
+<span class="text-[10px] font-medium">Recents</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 w-16 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[26px]">group</span>
+<span class="text-[10px] font-medium">Contacts</span>
+</button>
+<!-- Active Tab -->
+<button class="flex flex-col items-center justify-center gap-1 p-2 w-16 text-primary transition-colors">
+<span class="material-symbols-outlined text-[26px] fill-current">apps</span>
+<span class="text-[10px] font-bold">Keypad</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 w-16 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[26px]">voicemail</span>
+<span class="text-[10px] font-medium">Voicemail</span>
+</button>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,21 @@
+{
+  "name": "global-messenger-app",
+  "version": "1.0.0",
+  "description": "Global Messenger Microservices",
+  "main": "index.js",
+  "scripts": {
+    "start:all": "concurrently \"npm run dev --prefix services/user-service\" \"npm run dev --prefix services/chat-service\" \"npm run dev --prefix services/billing-service\" \"npm run dev --prefix services/notification-service\" \"npm run dev --prefix services/api-gateway\"",
+    "docker:up": "docker-compose up -d"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "dependencies": {
+    "@expo/vector-icons": "^15.0.3",
+    "expo": "^54.0.32"
+  }
+}
