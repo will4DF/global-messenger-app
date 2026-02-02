@@ -3,7 +3,7 @@
 A Microservices-based communication platform designed to replace traditional carrier plans.
 
 ## 🏗 Architecture
-![Architecture Diagram](./docs/blueprints/architecture_diagram.png)
+![Architecture Diagram](./docs/architecture_diagram.png)
 
 ## 🚀 Tech Stack
 - **Frontend:** React Native (Expo)
@@ -19,22 +19,24 @@ A Microservices-based communication platform designed to replace traditional car
 4. **Notification Service:** Recurring Cron jobs for daily digests.
 5. **API Gateway:** Central routing and logging.
 
-## 🎨 UI Showcase
-> Blueprints generated via Stitch AI.
+## 🎨 UI Design
+> Blueprints generated via Stitch.
 
-<div align="center">
-  <table border="0">
-    <tr>
-      <td><b>Chat Interface</b></td>
-      <td><b>Dialer (VoIP)</b></td>
-    </tr>
-    <tr>
-      <td><img src="./docs/blueprints/chat.png" width="250" alt="Chat UI"></td>
-      <td><img src="./docs/blueprints/screen.png" width="250" alt="Dialer UI"></td>
-    </tr>
-  </table>
-  <p><i>Full UI flows available in the <a href="./docs/blueprints/">Docs Folder</a>.</i></p>
+<div align="center"> 
+	<table border="0"> 
+		<tr> 
+			<td><b>Chat Interface</b></td> 
+			<td><b>Dialer (VoIP)</b></td> 
+		</tr> 
+		<tr> 
+			<td><img src="./docs/blueprints/chat.png" width="250" alt="Chat UI">
+			</td> <td><img src="./docs/blueprints/screen.png" width="250" alt="Dialer UI"></td> 
+		</tr> 
+	</table> 
+	<p><i>Full UI flows available in the <a href="./docs/blueprints/">Docs Folder</a>.</i></p> 
 </div>
+
+See [Docs Folder](./docs/blueprints/) for full UI flows.
 
 ## ⚡️ How to Run
 1. **Start Infrastructure:**
