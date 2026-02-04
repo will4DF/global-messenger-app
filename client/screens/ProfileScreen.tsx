@@ -30,18 +30,18 @@ export default function ProfileScreen() {
           <User size={60} color="#fff" />
         </View>
         <Text style={styles.name}>{user?.name || "William"}</Text>
-        <Text style={styles.role}>AI Advertising Ops Specialist</Text>
+        <Text style={styles.role}>Hi there! I'm usign ______ </Text>
       </View>
 
       <View style={styles.statsContainer}>
         <View style={styles.statBox}>
-          <Text style={styles.statValue}>3.95</Text>
-          <Text style={styles.statLabel}>GPA</Text>
+          <Text style={styles.statValue}>382</Text>
+          <Text style={styles.statLabel}>Friends</Text>
         </View>
         <View style={styles.statDivider} />
         <View style={styles.statBox}>
-          <Text style={styles.statValue}>Junior</Text>
-          <Text style={styles.statLabel}>Year</Text>
+          <Text style={styles.statValue}>?</Text>
+          <Text style={styles.statLabel}>?</Text>
         </View>
       </View>
 
