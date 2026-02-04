@@ -25,18 +25,18 @@ A Microservices-based communication platform designed to replace traditional car
 <div align="center"> 
 	<table border="0"> 
 		<tr> 
-			<td><b>Chat Interface</b></td> 
-			<td><b>Dialer (VoIP)</b></td> 
+			<td><b>Chat List</b></td> 
+			<td><b>Conversation</b></td> 
+			<td><b>Profile & Billing</b></td>
 		</tr> 
 		<tr> 
-			<td><img src="./docs/blueprints/chat.png" width="250" alt="Chat UI">
-			</td> <td><img src="./docs/blueprints/screen.png" width="250" alt="Dialer UI"></td> 
+			<td><img src="./docs/blueprints/chats.png" width="250" alt="Chat List UI"></td>
+			<td><img src="./docs/blueprints/chat.png" width="250" alt="Conversation UI"></td> 
+			<td><img src="./docs/blueprints/profile.png" width="250" alt="Profile UI"></td>
 		</tr> 
 	</table> 
 	<p><i>Full UI flows available in the <a href="./docs/blueprints/">Docs Folder</a>.</i></p> 
 </div>
-
-See [Docs Folder](./docs/blueprints/) for full UI flows.
 
 ## ⚡️ How to Run
 1. **Start Infrastructure:**
