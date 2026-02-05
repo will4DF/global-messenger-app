@@ -28,11 +28,13 @@ A Microservices-based communication platform designed to replace traditional car
 			<td><b>Chat List</b></td> 
 			<td><b>Conversation</b></td> 
 			<td><b>Profile & Billing</b></td>
+                        <td><b>Dial VoIP</b></td>
 		</tr> 
 		<tr> 
 			<td><img src="./docs/blueprints/chats.png" width="250" alt="Chat List UI"></td>
 			<td><img src="./docs/blueprints/chat.png" width="250" alt="Conversation UI"></td> 
 			<td><img src="./docs/blueprints/profile.png" width="250" alt="Profile UI"></td>
+                        <td><img src="./docs/blueprints/dial.png" width="250" alt="Dial UI"></td>
 		</tr> 
 	</table> 
 	<p><i>Full UI flows available in the <a href="./docs/blueprints/">Docs Folder</a>.</i></p> 
